@@ -1,0 +1,840 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: GitarHub API
+  description: API for accessing GitarHub functionality
+servers:
+  - url: http://localhost:3000
+paths:
+  /user:
+    get:
+      description: Returns a list of users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of users returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new user
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/{user_id}:
+    get:
+      description: Returns the user with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update a user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete a user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: User has been deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /guitar:
+    get:
+      description: Returns a list of guitars
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of guitars returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Guitar'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new guitar
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Guitar'
+      responses:
+        '201':
+          description: Guitar has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guitar'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /guitar/{guitar_id}:
+    get:
+      description: Returns the guitar with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: guitar_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Guitar data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guitar'
+        '404':
+          description: Guitar with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update a guitar
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: guitar_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Guitar'
+      responses:
+        '201':
+          description: Guitar has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guitar'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete a guitar
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: guitar_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Guitar has been deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Guitar'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /order:
+    get:
+      description: Returns a list of orders
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of orders returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new order
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: Order has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /order/{order_id}:
+    get:
+      description: Returns the order with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update an order
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: Order has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete an order
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Order has been deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /shipping:
+    get:
+      description: Returns a list of shippings
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of shippings returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shipping'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new shipping
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipping'
+      responses:
+        '201':
+          description: Shipping has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipping'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /shipping/{shipping_id}:
+    get:
+      description: Returns the shipping with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: shipping_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Shipping data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipping'
+        '404':
+          description: Shipping with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update a shipping
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: shipping_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipping'
+      responses:
+        '201':
+          description: Shipping has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipping'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete a shipping
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: shipping_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Shipping has been deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipping'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /bill:
+    get:
+      description: Returns a list of bills
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of bills returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bill'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new bill
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bill'
+      responses:
+        '201':
+          description: Bill has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /bill/{bill_id}:
+    get:
+      description: Returns the bill with the given ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: bill_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Bill data returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+        '404':
+          description: Bill with the give ID was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      description: Update a bill
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: bill_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bill'
+      responses:
+        '201':
+          description: Bill has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Delete a bill
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: bill_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Bill has been deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - email
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+        active:
+          type: boolean
+    Guitar:
+      type: object
+      required:
+        - brand
+        - model
+        - color
+        - price
+      properties:
+        brand:
+          type: string
+        model:
+          type: string
+        color:
+          type: string
+        description:
+          type: string
+        price:
+          type: string
+        active:
+          type: boolean
+    Order:
+      type: object
+      required:
+        - user
+        - guitars
+        - price
+      properties:
+        user:
+          type: object
+          $ref: '#/components/schemas/User'
+        guitars:
+          type: array
+          items: 
+            type: object
+            $ref: '#/components/schemas/Guitar'
+        time:
+          type: string
+        price:
+          type: number
+        bill:
+          type: object
+          $ref: '#/components/schemas/Bill'
+        shipped:
+          type: boolean
+    Shipping:
+      type: object
+      required:
+        - customer
+        - guitars
+        - address
+      properties:
+        customer:
+          type: object
+          $ref: '#/components/schemas/User'
+        guitars:
+          type: number
+        address: 
+          type: string
+        price:
+          type: number
+        active:
+          type: boolean
+    Bill:
+      type: object
+      required:
+        - user
+        - guitars
+      properties:
+        user:
+          type: object
+          $ref: '#/components/schemas/User'
+        guitars:
+          type: array
+          items: 
+            type: object
+            $ref: '#/components/schemas/Guitar'
+        time: 
+          type: string
+        price:
+          type: number
+        shipped:
+          type: boolean
+    Error:
+      type: object
+      required:
+        - message
+        - has_error
+      properties:
+        message:
+          type: string
+        has_error:
+          type: boolean

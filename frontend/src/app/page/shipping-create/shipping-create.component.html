@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-6 offset-3">
+    <form #shippingForm="ngForm" (ngSubmit)="onSave(shippingForm)">
+      <div class="form-group">
+        <label for="">User</label>
+        <input class="form-control" type="text" name="user" [(ngModel)]="shipping.user">
+      </div>
+      <div class="form-group">
+        <label for="">Guitars</label>
+        <input class="form-control" type="number" name="guitars" [(ngModel)]="shipping.guitars">
+      </div>
+      <div class="form-group">
+        <label for="">Address</label>
+        <input class="form-control" type="text" name="address" [(ngModel)]="shipping.address">
+      </div>
+      <div class="form-group">
+        <label for="">Price</label>
+        <input class="form-control" type="number" name="price" [(ngModel)]="shipping.price">
+      </div>
+
+      <button type="submit" [disabled]="shippingForm.invalid" class="btn btn-primary w-100 mt-3 mb-3">
+        Create a new Shipping
+      </button>
+    </form>
+  </div>
+</div>

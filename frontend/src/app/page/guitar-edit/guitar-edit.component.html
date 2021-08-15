@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-6 offset-3 mt-3">
+    <form *ngIf="(guitar$ | async) as guitar" #editForm="ngForm" (ngSubmit)="onSave(editForm)">
+      <input name="_id" type="hidden" [(ngModel)]="guitar._id">
+      <div class="form-group">
+        <label for="">Brand</label>
+        <input class="form-control" type="text" name="brand" [(ngModel)]="guitar.brand">
+      </div>
+      <div class="form-group">
+        <label for="">Model</label>
+        <input class="form-control" type="text" name="model" [(ngModel)]="guitar.model">
+      </div>
+      <div class="form-group">
+        <label for="">Color</label>
+        <input class="form-control" type="text" name="color" [(ngModel)]="guitar.color">
+      </div>
+      <div class="form-group">
+        <label for="">Description</label>
+        <input class="form-control" type="text" name="description" [(ngModel)]="guitar.description">
+      </div>
+      <div class="form-group">
+        <label for="">Price</label>
+        <input class="form-control" type="number" name="price" [(ngModel)]="guitar.price">
+      </div>
+      <div class="form-group">
+        <label for="">Active</label>
+        <input type="checkbox" name="active" [(ngModel)]="guitar.active">
+      </div>
+
+      <button type="submit" [disabled]="editForm.invalid" class="btn btn-primary w-100 mt-3 mb-3">
+        <i class="fas fa-save"></i> Update the Guitar
+      </button>
+
+      <button type="button" class="btn btn-danger w-100 mt-3 mb-3" (click)="delete(guitar)">
+        <i class="fas fa-trash"></i> Delete the Guitar
+      </button>
+    </form>
+  </div>
+</div>
