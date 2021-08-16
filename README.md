@@ -1,6 +1,13 @@
 # GitárHub
 
 Training 360 - Full Stack API fejlesztő tanfolyam vizsgaremek
+
+Belépési adatok:
+
+Felhasználónév: admin@gmail.com
+
+Jelszó: admin_pw
+
 _______________________________
 
 GitárHub – User Storyk

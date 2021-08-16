@@ -1,0 +1,49 @@
+module.exports = [{
+    "_id": "611977d56d34ab001467911d",
+    "firstName": "Admin",
+    "lastName": "Sandor",
+    "email": "admin@gmail.com",
+    "password": "admin_pw",
+    "active": true,
+    "role": "admin"
+}, {
+    "_id": "611977d66d34ab001467911f",
+    "firstName": "User",
+    "lastName": "Geza",
+    "email": "user@gmail.com",
+    "password": "user_pw",
+    "active": true,
+    "role": "user"
+}, {
+    "_id": "611977d66d34ab00146748f9",
+    "firstName": "Jimi",
+    "lastName": "Hendrix",
+    "email": "jimihendrix@woodstock.com",
+    "password": "user_pw",
+    "active": true,
+    "role": "user"
+}, {
+    "_id": "611977d66d34ab001468ff49",
+    "firstName": "Saul",
+    "lastName": "Hudson",
+    "email": "slash@gunsnroses.com",
+    "password": "user_pw",
+    "active": true,
+    "role": "user"
+}, {
+    "_id": "611977d66d34ab0014653f71",
+    "firstName": "Eddie",
+    "lastName": "Van Halen",
+    "email": "eddie@vanhalen.com",
+    "password": "user_pw",
+    "active": true,
+    "role": "user"
+}, {
+    "_id": "611977d66d34ab001467f824",
+    "firstName": "Jimmy",
+    "lastName": "Page",
+    "email": "zoso@ledzeppelin.com",
+    "password": "user_pw",
+    "active": true,
+    "role": "user"
+}]

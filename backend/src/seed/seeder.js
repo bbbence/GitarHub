@@ -12,11 +12,8 @@ const seedCollection = async (model, fileName) => {
             throw new Error();
         }
     } catch (e) {
-        const source = await fsp.readFile(
-            `./src/seed/${fileName}.json`, 
-            'utf8'
-        );
-        const list = JSON.parse(source);
+        const source = `./${fileName}`;
+        const list = require(source);
         for (let i = 0; i < list.length; i++) {
             let record = new model(list[i]);
             await record.save();

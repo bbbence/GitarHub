@@ -52,6 +52,20 @@ export class ConfigService {
     {key: "shipped", title: "Shipped", htmlOutput: ConfigService.activeOrInactiveSign},
   ];
 
+  shippingColumns: ITableColumn[] = [
+    {key: "_id", title: "#"},
+    {
+      key: "user",
+      title: "User",
+      pipes: [ConfigService.getSubProperty],
+      pipeArgs: [['firstName', 'lastName']]
+    },
+    {key: "guitars", title: "Guitars"},
+    {key: "price", title: "Price", pipes: [new CurrencyPipe('hu-HU')], pipeArgs: [['HUF', 'symbol', '3.0']]},
+    {key: "address", title: "Address"},
+    {key: "active", title: "Active", htmlOutput: ConfigService.activeOrInactiveSign},
+  ];
+
   billColumns: ITableColumn[] = [
     {key: "_id", title: "#"},
     {
@@ -79,7 +93,10 @@ export class ConfigService {
     return keys.map( key => get(obj, key) ).join(' ');
   }
 
-  static sqlDate(jsTime: number): string | number | boolean | undefined {
+  static sqlDate(jsTime: number | string | Date): string | number | boolean | undefined {
+
+    const serverDate = jsTime instanceof Date ? jsTime : new Date(jsTime);
+
     const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: 'numeric',
@@ -87,7 +104,9 @@ export class ConfigService {
       hour: 'numeric',
       minute: 'numeric'
     };
-    return Intl.DateTimeFormat('hu', options).format(jsTime);
+
+    return Intl.DateTimeFormat('hu', options).format(serverDate);
+
   }
 
   static curveLongString(
